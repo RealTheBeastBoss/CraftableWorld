@@ -246,12 +246,12 @@ spotlight = Item("Spotlight", "Main Character Moment", 4)  # 0/4 Uses, 3/3 Ways 
 organic_matter = Item("Organic Matter", "Stuff that Life is made of", 10)  # 10/10 Uses, 3/4 Ways to Craft
 mineral = Item("Mineral", "Eat your Cereal, Kids", 10)  # 7/10 Uses, 4/6 Ways to Craft
 steel = Item("Steel", "Stop, Thief!", 74)  # 18/74 Uses, 4/4 Ways to Craft
-coal = Item("Coal", "Cold Diamonds", 6)  # 2/6 Uses, 1/6 Ways to Craft
-charcoal = Item("Charcoal", "Post-2020 Australia", 4)  # 3/4 Uses, 4/4 Ways to Craft
+coal = Item("Coal", "Cold Diamonds", 6)  # 3/6 Uses, 1/6 Ways to Craft
+charcoal = Item("Charcoal", "Post-2020 Australia", 4)  # 4/4 Uses, 4/4 Ways to Craft
 tree = Item("Tree", "Useless Superpower", 61)  # 14/61 Uses, 3/4 Ways to Craft
 oxygen = Item("Oxygen", "It made The Doctor blind", 11)  # 3/11 Uses, 2/8 Ways to Craft
 sunflower = Item("Sunflower", "Circle Plants", 7)  # 0/7 Uses, 1/2 Ways to Craft
-wood = Item("Wood", "POV: you just woke up", 74)  # 19/74 Uses, 4/9 Ways to Craft
+wood = Item("Wood", "POV: you just woke up", 74)  # 21/74 Uses, 4/9 Ways to Craft
 campfire = Item("Campfire", "Typically used to regain health", 25)  # 8/25 Uses, 1/1 Way to Craft
 lumberjack = Item("Lumberjack", "The chin boi from Hoodwinked", 8)  # 4/8 Uses, 3/4 Ways to Craft
 axe = Item("Axe", "Wood Destroyer... not like that though", 20)  # 13/20 Uses, 4/4 Ways to Craft
@@ -275,12 +275,13 @@ fishing_rod = Item("Fishing Rod", "Oldschool PVP Strats", 3)  # 0/3 Uses, 2/12 W
 rainbow = Item("Rainbow", "Gay?", 23)  # 4/23 Uses, 5/7 Ways to Craft
 magic = Item("Magic", "Avada Kedavra!!", 13)  # 1/13 Uses, 1/4 Ways to Craft
 wizard = Item("Wizard", "Yer a Wizard, Harry", 11)  # 5/11 Uses, 2/4 Ways to Craft
-wand = Item("Wand", "Not like that though", 0)  # 0 Uses, 0/4 Ways to Craft
+wand = Item("Wand", "Not like that though", 0)  # 0 Uses, 4/4 Ways to Craft
+pencil = Item("Pencil", "Fear Her", 13)  # 1/13 Uses, 2/2 Ways to Craft
 items = [air, water, earth, fire, steam, pressure, geyser, puddle, pond, lake, sea, ocean, land, continent, planet, solar_system, galaxy, galaxy_cluster, universe, energy, heat, lava, stone, metal, mud, clay, primordial_soup,
          life, human, tool, wheel, time_item, science, gas, smoke, atmosphere, cloud, sky, sun, obsidian, mist, horizon, aurora, space, sand, moon, eclipse, rain, lightning, electricity, ozone, storm, wind, motion, idea,
          philosophy, big, small, gold, machine, car, glass, glasses, mirror, hacker, computer, internet, animal, soil, meat, sloth, plant, ash, tobacco, dust, field, gunpowder, explosion, lightbulb, light, spotlight,
          organic_matter, mineral, steel, coal, charcoal, tree, oxygen, sunflower, wood, campfire, lumberjack, axe, pebble, rock, blade, sword, granite, eruption, volcano, boulder, corpse, blood, death, phoenix, egg, omelette,
-         fish, roe, fishing_rod, rainbow, magic, wizard, wand]
+         fish, roe, fishing_rod, rainbow, magic, wizard, wand, pencil]
 # CRAFTS:
 steam1 = Craft(fire, water, steam, aa4=water, aa1=fire, ab1=gas, ac1=heat, ad1=lava)  # Fire + Water = Steam
 steam2 = Craft(gas, water, steam, aa4=water, aa1=fire, ab1=gas, ac1=heat, ad1=lava)  # Gas + Water = Steam
@@ -613,7 +614,12 @@ magic1 = Craft(life, rainbow, magic, aa2=life, ab2=energy, aa1=rainbow, ab1=wiza
 magic2 = Craft(wizard, energy, magic, aa2=life, ab2=energy, aa1=rainbow, ab1=wizard)  # Double Rainbow - 1, Witch - 1 Wizard + Energy = Magic
 wizard1 = Craft(human, magic, wizard, aa4=human, aa1=magic, ab1=rainbow)  # Double Rainbow - 1, Unicorn - 1 Human + Magic = Wizard
 wizard2 = Craft(human, rainbow, wizard, aa4=human, aa1=magic, ab1=rainbow)  # Double Rainbow - 1, Unicorn - 1 Human + Rainbow = Wizard
-wand1 = Craft(wizard, sword, wand, aa4=wizard, aa1=sword, ab1=tool, ac1=wood)  # Pencil - 1 Wizard + Sword = Wand
+wand1 = Craft(wizard, sword, wand, aa4=wizard, aa1=sword, ab1=tool, ac1=wood, ad1=pencil)  # Wizard + Sword = Wand
+wand2 = Craft(wizard, tool, wand, aa4=wizard, aa1=sword, ab1=tool, ac1=wood, ad1=pencil)  # Wizard + Tool = Wand
+wand3 = Craft(wizard, wood, wand, aa4=wizard, aa1=sword, ab1=tool, ac1=wood, ad1=pencil)  # Wizard + Wood = Wand
+wand4 = Craft(wizard, pencil, wand, aa4=wizard, aa1=sword, ab1=tool, ac1=wood, ad1=pencil)  # Wizard + Pencil = Wand
+pencil1 = Craft(wood, charcoal, pencil, aa2=wood, aa1=charcoal, ab1=coal)  # Wood + Charcoal = Pencil
+pencil2 = Craft(wood, coal, pencil, aa2=wood, aa1=charcoal, ab1=coal)  # Wood + Coal = Pencil
 crafts = [steam1, steam2, steam3, steam_obsidian, pressure1, pressure2, pressure3, pressure4, pressure5, geyser1, geyser2, puddle1, puddle2, pond1, pond2, pond3, pond4, lake1, lake2, lake3, lake4, sea1, sea2, sea3,
           sea4, ocean1, ocean2, ocean3, land1, land2, land3, land4, land5, continent1, continent2, continent3, planet1, planet2, planet3, planet4, planet_horizon, solarsystem1, solarsystem2, galaxy1,
           galaxy2, galaxy3, galaxycluster1, universe1, energy1, energy2, energy3, energy_heat, heat1, heat2, heat3, lava1, lava2, stone1, stone2, metal1, metal2, mud1, mud2, clay1, clay2, clay3, clay4, clay5, primordialsoup1,
@@ -628,7 +634,7 @@ crafts = [steam1, steam2, steam3, steam_obsidian, pressure1, pressure2, pressure
           organicmatter1, organicmatter2, organicmatter3, mineral1, mineral2, mineral3, steel1, steel2, steel3, steel4, coal1, charcoal1, charcoal2, charcoal_smoke_campfire, tree1, tree2, tree3, oxygen1, oxygen_sunflower,
           wood1, wood2, wood3, wood4, lumberjack1, lumberjack2, axe1, axe2, axe_sword, pebble1, pebble2, pebble3, rock1, rock2, rock3, blade1, blade2, blade3, blade4, sword1, sword2, granite1, granite2, granite_eruption,
           eruption1, volcano1, boulder1, boulder2, boulder3, boulder4, boulder5, corpse1, corpse2, corpse3, corpse_blood, death1, death2, phoenix1, phoenix2, phoenix_omelette, egg1, egg2, omelette1, omelette2, fish1,
-          fish2, fish3, fish4, fish_roe, fish_roe2, fish_roe3, fish_roe4, roe1, fishingrod1, rainbow1, rainbow2, rainbow3, rainbow4, rainbow5, magic1, magic2, wizard1, wizard2]
+          fish2, fish3, fish4, fish_roe, fish_roe2, fish_roe3, fish_roe4, roe1, fishingrod1, rainbow1, rainbow2, rainbow3, rainbow4, rainbow5, magic1, magic2, wizard1, wizard2, wand1, wand2, wand3, wand4, pencil1, pencil2]
 # GAME CODE:
 inventory = [air, water, earth, fire]
 items_crafted = 4
